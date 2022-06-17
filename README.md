@@ -18,3 +18,41 @@ docker-compose up
 ```
 
 The API will then be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Notes
+
+Generate a django application called `core`:
+
+```bash
+docker compose run --rm app sh -c "python manage.py startapp core"
+```
+
+Run tests *locally*:
+
+```bash
+python manage.py test
+```
+
+Run linter:
+
+```bash
+docker compose run --rm app sh -c "python manage.py flake8"
+```
+
+Run tests:
+
+```bash
+docker compose run --rm app sh -c "python manage.py test"
+```
+
+Run single test:
+
+```bash
+docker compose run --rm app sh -c "python manage.py wait_for_db"
+```
+
+Run tests and linter:
+
+```bash
+docker compose run --rm app sh -c "python manage.py test flake8"
+```
