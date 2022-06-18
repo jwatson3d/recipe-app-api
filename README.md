@@ -36,7 +36,7 @@ python manage.py test
 Run linter:
 
 ```bash
-docker compose run --rm app sh -c "python manage.py flake8"
+docker compose run --rm app sh -c "flake8"
 ```
 
 Run tests:
@@ -54,5 +54,40 @@ docker compose run --rm app sh -c "python manage.py wait_for_db"
 Run tests and linter:
 
 ```bash
-docker compose run --rm app sh -c "python manage.py test flake8"
+docker compose run --rm app sh -c "python manage.py test && flake8"
 ```
+
+Make database migrations:
+
+```bash
+docker compose run --rm app sh -c "python manage.py makemigrations"
+```
+
+Run database migrations:
+
+```bash
+docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"
+```
+
+Create superuser:
+
+```bash
+docker compose run --rm app sh -c "python manage.py createsuperuser"
+```
+
+Django admin site:
+
+```bash
+http://localhost:8000/admin/
+```
+
+## Screenshots
+
+core_user:
+![core_user](images/db_core_user.png)
+
+create_superuser:
+![core_user](images/db_create_superuser.png)
+
+admin_site:
+![core_user](images/django_admin_site.png)
